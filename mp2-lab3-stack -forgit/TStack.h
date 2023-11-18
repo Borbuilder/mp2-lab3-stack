@@ -33,6 +33,10 @@ public:
 template <class T> //Конструктор по умолчанию
 TStack<T>::TStack(int ms) 
 {
+	if (ms < 1)
+	{
+		throw "Wrong MaxSize";
+	}
 	MaxSize = ms;
 	pMem = new T[MaxSize];
 	CurrentIndex = -1;

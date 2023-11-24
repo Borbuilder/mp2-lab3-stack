@@ -9,6 +9,8 @@ int sravn(const int *arrr,const int *arrr2) {
 
 int main()
 {
+	setlocale(LC_ALL, "Russian");
+
 	int size = 3; int size2 = 5;
 	int* arr; int* arr2;
 	arr = new int[size];

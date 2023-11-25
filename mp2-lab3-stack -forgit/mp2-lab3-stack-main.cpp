@@ -1,4 +1,6 @@
 #include <iostream>
+#include<string>
+#include "TCalc.h"
 
 int sravn(const int *arrr,const int *arrr2) {
 	if (arrr == arrr2) {
@@ -11,10 +13,7 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 
-	int size = 3; int size2 = 5;
-	int* arr; int* arr2;
-	arr = new int[size];
-	arr2 = new int[size2];
-	std::cout << sravn(arr, arr);
+	TCalc m("(2+2)*(3+1)");
+	std::cout << m.Calculate();
 
 };

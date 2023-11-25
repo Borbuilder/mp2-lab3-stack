@@ -23,6 +23,7 @@ public:
 	int ElementsNumber(); // Количесвто элементов в стеке
 	void output(); // Метод вывода стека на экран 
 	void Push(const T element); // Метод добавления элемента в стек
+	void ClerStack();  // Метод очистки стека
 	T Pop(); // Метод получения вершины стека (c её перемещением)
 	T Top(); // Метод получения значения вершины стека
 };
@@ -162,3 +163,8 @@ T TStack<T>::Top()
 	return pMem[CurrentIndex + 1];
 }
 
+template <class T> //Очистка стека ????? Нужно ли делать Pop для каждого элемента
+void TStack<T>::ClerStack()
+{
+	CurrentIndex = -1;
+}

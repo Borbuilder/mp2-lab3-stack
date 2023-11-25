@@ -1,13 +1,27 @@
 #pragma once
 #include<iostream>
+#include<string>
 #include "TStack.h"
 
 
 class TCalc
 {
 private:
-	std::string infix;
-	std::string postfic;
-	int priority(char op);
+	std::string infix; // Инфиксная строка, подаваемая на вход
+	std::string postfix; // Постфиксная строка
+
+	TStack<char> OpStack = TStack<char>(10); // Стек из операций "+", "-", ")" и тд
+	TStack<double> NumStack = TStack<double>(10); // Стек из чисел из инфиксной строки
+
+	int priority(char op); // Метод , определяющий приоритет операций
+	void ToPostfix(); // Метод перевода инфиксной строки в постфиксную
+
+public:
+	std::string GetInfix() { return infix; } // Получить инфиксную строку
+	std::string GetPostfix() { return postfix; } // Получить инфиксную строку
+
+	TCalc(std::string _infix) :infix(_infix) { ToPostfix(); } // Конструктор по умолчанию
+	double Calculate(); // Метод вычисления
+	
 };
 

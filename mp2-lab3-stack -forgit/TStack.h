@@ -124,7 +124,7 @@ void TStack<T>::output()
 		std::cout << "Stack is empty" << std::endl;
 	}
 	std::cout << "( ";
-	for (int i = 0; i < CurrentIndex; i++)
+	for (int i = 0; i <= CurrentIndex; i++)
 	{
 		std::cout << pMem[i] << " ";
 	}

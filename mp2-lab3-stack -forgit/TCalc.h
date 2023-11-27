@@ -19,9 +19,12 @@ private:
 public:
 	std::string GetInfix() { return infix; } // Получить инфиксную строку
 	std::string GetPostfix() { return postfix; } // Получить инфиксную строку
+	void SetInfix(std::string _infix) { infix = _infix; } // Записать строку в ификсную строку
 
 	TCalc(std::string _infix) :infix(_infix) { ToPostfix(); } // Конструктор по умолчанию
-	double Calculate(); // Метод вычисления
+	double CalculateWithPostfix(); // Метод вычисления c постфиксной 
+	double CalculateNoPostfix(); // Метод вычисления 
+
 	
 };
 

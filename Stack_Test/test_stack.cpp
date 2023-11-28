@@ -1,44 +1,52 @@
-//#define _CRT_SECURE_NO_WARNINGS
 #include "../mp2-lab3-stack -forgit/TStack.h"
-
 #include "gtest.h"
 
 TEST(TStack, can_create_stack_with_positive_MaxSize)
 {
-  ASSERT_NO_THROW(TStack<int> v(5));
-}
-/*
-TEST(TVector, cant_create_too_large_vector)
-{
-  ASSERT_ANY_THROW(TVector<int> v(MAX_VECTOR_SIZE + 1));
+    ASSERT_NO_THROW(TStack<int> st(5));
 }
 
-TEST(TVector, throws_when_create_vector_with_negative_length)
+TEST(TStack, throws_when_create_stack_with_negative_size)
 {
-  ASSERT_ANY_THROW(TVector<int> v(-5));
+	ASSERT_ANY_THROW(TStack<int> st(-5));
 }
 
-TEST(TVector, throws_when_create_vector_with_negative_startindex)
+TEST(TStack, can_create_copied_stack)
 {
-  ASSERT_ANY_THROW(TVector<int> v(5, -2));
+  TStack<int> st(5);
+  for (int i = 1; i <= 5; i++)
+  {
+		st.Push(i);
+  }
+  ASSERT_NO_THROW(TStack<int> st1(st));
+  EXPECT_EQ(1, 1);
 }
 
-TEST(TVector, can_create_copied_vector)
+TEST(TStack, copied_vector_is_equal_to_source_one)
 {
-  TVector<int> v(10);
-
-  ASSERT_NO_THROW(TVector<int> v1(v));
-}
-
-TEST(TVector, copied_vector_is_equal_to_source_one)
-{
-	TVector<int> v(3);
-	for (int i = 0; i < v.GetSize(); i++)
+	const int size = 5;
+	TStack<int> st(size);
+	for (int i = 1; i <= 5; i++)
 	{
-		v[i] = 1;
+		st.Push(i);
 	}
-	TVector<int> v1(v);
-	EXPECT_EQ(v1, v);
+	TStack<int> st1(st);
+	for (int i = 1; i <= 5; i++)
+	{
+		EXPECT_EQ(st.Pop(), st1.Pop());
+	}
+	
+}/*
+TEST(TStack, copied_stack_is_equal_to_source_one)
+{
+	int test_size = 5;
+	TStack<int> st(test_size);
+	for (int i = 0; i < test_size; i++)
+	{
+		st.Push(i+1);
+	}
+	TStack<int> st1(st); st.output(); st1.output();
+	EXPECT_EQ(st1, st);
 }
 
 TEST(TVector, copied_vector_has_its_own_memory)

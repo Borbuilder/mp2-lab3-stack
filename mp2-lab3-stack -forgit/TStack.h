@@ -36,7 +36,7 @@ TStack<T>::TStack(int ms)
 {
 	if (ms < 1)
 	{
-		throw "Wrong MaxSize";
+		throw "Неправильный  MaxSize в объекте класса TStack";
 	}
 	MaxSize = ms;
 	pMem = new T[MaxSize];
@@ -46,11 +46,12 @@ TStack<T>::TStack(int ms)
 template <class T> // Конструктор копирования
 TStack<T>::TStack(const TStack& StackObject)
 {
+	//if()
 	MaxSize = StackObject.MaxSize;
 	delete[] pMem;
 	pMem = new T[MaxSize];
 	CurrentIndex = StackObject.CurrentIndex;
-	std::copy(StackObject.pMem, StackObject.pMem + CurrentIndex, pMem);
+	std::copy(StackObject.pMem, StackObject.pMem + (CurrentIndex+1), pMem);
 }
 
 template <class T> //Оператор сравнения
@@ -126,7 +127,7 @@ void TStack<T>::output()
 	std::cout << "( ";
 	for (int i = 0; i <= CurrentIndex; i++)
 	{
-		std::cout << pMem[i] << " ";
+		std::cout << pMem[CurrentIndex - i] << " ";
 	}
 	std::cout << ")" << std::endl;
 }

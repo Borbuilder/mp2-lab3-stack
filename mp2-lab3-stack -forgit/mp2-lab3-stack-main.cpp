@@ -14,13 +14,19 @@ int main()
 	TCalc m(expression);
 	std::cout <<"Результат:"<<std::endl<<expression << " = " << m.CalculateNoPostfix()<<std::endl;*/
 	TStack<int> st(5);
+	TStack<int> st1(5);
 	for (int i = 1; i <= 5; i++)
 	{
 		st.Push(i);
 	}
-	TStack<int> st1(st);
-	st.output();
-	st1.output();
+	for (int i = 1; i <= 5; i++)
+	{
+		st1.Push(i + 1);
+	}
+	//ASSERT_NO_THROW(st = st1);
+	st = st1;
+	//st.output();
+	//st1.output();
 	for (int i = 1; i <= 5; i++)
 	{
 		std::cout<<i<<": "<<st.Pop()<<" "<<st1.Pop()<<std::endl;

@@ -46,7 +46,6 @@ TStack<T>::TStack(int ms)
 template <class T> // Конструктор копирования
 TStack<T>::TStack(const TStack& StackObject)
 {
-	//if()
 	MaxSize = StackObject.MaxSize;
 	delete[] pMem;
 	pMem = new T[MaxSize];
@@ -86,7 +85,7 @@ TStack<T>& TStack<T>::operator = (const TStack& StackObject)
 		MaxSize = StackObject.MaxSize;
 		CurrentIndex = StackObject.CurrentIndex;
 		pMem = new T[MaxSize];
-		std::copy(StackObject.pMem, StackObject.pMem + CurrentIndex, pMem);
+		std::copy(StackObject.pMem, StackObject.pMem + (CurrentIndex+1), pMem);
 	}
 	return *this;
 }
@@ -122,7 +121,7 @@ void TStack<T>::output()
 {
 	if (CurrentIndex == -1)
 	{
-		std::cout << "Stack is empty" << std::endl;
+		throw "Stack is empty";
 	}
 	std::cout << "( ";
 	for (int i = 0; i <= CurrentIndex; i++)
@@ -161,7 +160,7 @@ T TStack<T>::Top()
 	{
 		throw "Stack is empty";
 	}
-	return pMem[CurrentIndex + 1];
+	return pMem[CurrentIndex];
 }
 
 template <class T> //Очистка стека ????? Нужно ли делать Pop для каждого элемента

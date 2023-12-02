@@ -89,7 +89,7 @@ double TCalc::CalculateWithPostfix() //Вычисление с постфиксом
 				y = x1 + x2;
 				break;
 			case '-':
-				y = x1 - x2;
+				y = x2 - x1;
 				break;
 			case '*':
 				y = x1 * x2;
